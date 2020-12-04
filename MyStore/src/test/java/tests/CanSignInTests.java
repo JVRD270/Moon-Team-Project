@@ -3,8 +3,8 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import framework.SignInPage;
 import framework.TestBase;
+import pages.SignInPage;
 
 public class CanSignInTests extends TestBase{
 	@Test

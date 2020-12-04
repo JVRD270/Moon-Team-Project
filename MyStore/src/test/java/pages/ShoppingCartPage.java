@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import framework.PageObjectBase;
 
@@ -18,13 +20,13 @@ public class ShoppingCartPage extends PageObjectBase{
 	}
 	
 	public ShoppingCartPage goToShoppingCart(){
-		SignInPage sip = new SignInPage();
+		SignInPage sip = new SignInPage(driver, baseUrl);
 		sip.navigate()
-			.sendEmailInput("butt@gmail.com");
-			.sendPassInput("butts");
+			.sendEmailInput("butt@gmail.com")
+			.sendPassInput("butts")
 			.submitCredentials();
 			
-		AddToCart atc = new AddToCart();
+		AddItemPage atc = new AddItemPage(driver, baseUrl);
 		atc.navigate()
 		.searchForDress()
 		.addFirstDress()
@@ -38,10 +40,12 @@ public class ShoppingCartPage extends PageObjectBase{
 	
 	//if signed in goes to address other wise it goes to sign in
 		public AddressPage proceedToCheckOut(){
-			String xpath = "//button[@type='submit']//span[contains(text(),'Proceed to checkout')]";
+			String xpath = "//a[@class='button btn btn-default standard-checkout button-medium']//span[contains(text(),'Proceed to checkout')]";
+			System.out.println("Shopping Cart Page");
 			WebElement proceed = driver.findElement(By.xpath(xpath));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(proceed));
 			proceed.click();
-			return (AddressPage)this;
+			return new AddressPage(driver, baseUrl);
 		}
 
 }

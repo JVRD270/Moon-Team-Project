@@ -1,10 +1,12 @@
-package framework;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SignInPage extends PageObjectBase{
+import framework.PageObjectBase;
+
+public class SignInPage extends PageObjectBase {
 	private final String urlPath = "?controller=authentication&back=my-account";
 	
 	public SignInPage(WebDriver driver, String baseUrl) {

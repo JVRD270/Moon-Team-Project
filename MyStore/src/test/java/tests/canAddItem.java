@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import framework.TestBase;
+import pages.AddItemPage;
 
 public class canAddItem extends TestBase {
 

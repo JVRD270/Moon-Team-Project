@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShippingPage extends AddressPage{
 	public ShippingPage(WebDriver driver, String url) {
@@ -16,12 +18,14 @@ public class ShippingPage extends AddressPage{
 	
 	//goes to payment
 	public PaymentPage proceedToCheckOut(){
-		String checkboxPath = "//input[@id='cgv']";
-		driver.findElement(By.xpath(checkboxPath)).click();
-		
 		String xpath = "//button[@type='submit']//span[contains(text(),'Proceed to checkout')]";
 		WebElement proceed = driver.findElement(By.xpath(xpath));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(proceed));
+		String checkboxXpath = "//div[@id='uniform-cgv']";
+		WebElement checkbox = driver.findElement(By.xpath(checkboxXpath)).findElement(By.cssSelector("span"));
+		System.out.println("Shipping Page");
+		checkbox.click();
 		proceed.click();
-		return (PaymentPage)this;
+		return new PaymentPage(driver, baseUrl);
 	}
 }

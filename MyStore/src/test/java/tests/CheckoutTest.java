@@ -14,6 +14,7 @@ public class CheckoutTest extends TestBase{
 		String expectedURL = "http://automationpractice.com/index.php?controller=order-confirmation&id_cart=2438500&id_module=3&id_order=262704&key=3edb94b4bcf988091cb45f9530a2f4e2";
 		ShoppingCartPage sp = new ShoppingCartPage(webDriver, baseUrl);
 		sp.goToShoppingCart()
+			.navigate()
 			.proceedToCheckOut()//address
 			.proceedToCheckOut()
 			.proceedToCheckOut()
@@ -25,15 +26,5 @@ public class CheckoutTest extends TestBase{
 		
 		Assert.assertEquals(actualURL, expectedURL);
 			
-	}
-	
-	@BeforeTest
-	public void before() {
-		super.beforeTest();
-	}
-	
-	@AfterTest
-	public void after() {
-		super.afterTest();
 	}
 }
