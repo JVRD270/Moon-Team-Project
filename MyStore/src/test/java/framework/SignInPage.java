@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SignInPage extends PageObjectBase{
-	private final String urlPath = "/index.php?controller=authentication&back=my-account";
+	private final String urlPath = "?controller=authentication&back=my-account";
 	
 	public SignInPage(WebDriver driver, String baseUrl) {
 		super(driver, baseUrl);
