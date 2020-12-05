@@ -19,8 +19,8 @@ public class ShippingPage extends AddressPage{
 	//goes to payment
 	public PaymentPage proceedToCheckOut(){
 		String xpath = "//button[@type='submit']//span[contains(text(),'Proceed to checkout')]";
-		WebElement proceed = driver.findElement(By.xpath(xpath));
-		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(proceed));
+//		WebElement proceed = driver.findElement(By.xpath(xpath));
+		WebElement proceed = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(xpath))));
 		String checkboxXpath = "//div[@id='uniform-cgv']";
 		WebElement checkbox = driver.findElement(By.xpath(checkboxXpath)).findElement(By.cssSelector("span"));
 		System.out.println("Shipping Page");
