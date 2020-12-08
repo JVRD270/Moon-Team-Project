@@ -8,7 +8,8 @@ import pages.AddItemPage;
 
 public class SetPriceRange extends TestBase {
 	
-	
+
+  //This test fails because page never stops loading
   @Test
   public void canFilterSearchByPrice() {
 	    
@@ -16,18 +17,14 @@ public class SetPriceRange extends TestBase {
 			String expectedText= "Printed Summer Dress";
 
 			//Act:
-			new AddItemPage(webDriver, baseUrl)
+			Boolean pageLoaded = new AddItemPage(webDriver, baseUrl)
 					.navigate()
 					.goToDresses()
 					.clickAndSetPriceRange(17.85)
 					.waitForPageLoad();
-
-
-
+			
+			Assert.assertTrue(pageLoaded);
 		}
-	  
-	  
-	  
   }
   
   

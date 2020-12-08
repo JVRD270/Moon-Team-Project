@@ -23,7 +23,7 @@ public abstract class TestBase {
 	
 	@AfterTest
 	protected void afterTest() {
-		this.webDriver.quit();
+		//this.webDriver.quit();
 	}
 	
 	private void LoadConfigurations() {

@@ -37,7 +37,8 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/form[1]/div[1]/div[10]/ul[1]/div[1]/div[1]/a[1]")
 		WebElement priceBar;
 		
-		@FindBy (xpath = "//p[text()[contains(.,'Loading...')]]")
+		//@FindBy (xpath = "//p[text()[contains(.,'Loading...')]]")
+		@FindBy (xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[2]/ul[1]/p[1]/img[1]")
 		WebElement load; 
 		
 		@FindBy (xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
@@ -108,12 +109,11 @@ public class AddItemPage extends PageObjectBase {
 		
 	 
 		//wait for page to stop loading 
-		public AddItemPage waitForPageLoad() {
+		public Boolean waitForPageLoad() {
 			
 			try {
-				
 				new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOf(load));
-				
+				return true;
 			} catch (Exception e) { 
 				
 			   System.out.println( e ); 
@@ -121,7 +121,7 @@ public class AddItemPage extends PageObjectBase {
 			}
 			
 			
-			return this;
+			return false;
 		}
 		 
 		 
