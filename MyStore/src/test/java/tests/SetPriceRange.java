@@ -18,7 +18,7 @@ public class SetPriceRange extends TestBase {
 			//Act:
 			new AddItemPage(webDriver, baseUrl)
 					.navigate()
-					.searchForDress()
+					.goToDresses()
 					.clickAndSetPriceRange(17.85)
 					.waitForPageLoad();
 

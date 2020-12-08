@@ -34,11 +34,14 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//td[@class='cart_description']//p[@class='product-name']//a[contains(text(),'Printed Summer Dress')]")
 		WebElement dressInCart;
 		
-		@FindBy (css = "div#layered_price_slider a:nth-child(0)")
+		@FindBy (xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/form[1]/div[1]/div[10]/ul[1]/div[1]/div[1]/a[1]")
 		WebElement priceBar;
 		
 		@FindBy (xpath = "//p[text()[contains(.,'Loading...')]]")
 		WebElement load; 
+		
+		@FindBy (xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
+		WebElement dressesLink;
 		
 		
 		//2) Create method to navigate page: 
@@ -80,43 +83,46 @@ public class AddItemPage extends PageObjectBase {
 		 	   
 		 }
 		 
+		 public AddItemPage goToDresses() {
+			 dressesLink.click();
+			 return this;
+		 }
 
-
-			//Click price range and set
-		    //click right arrow x 5 ($17.85)
-			public AddItemPage clickAndSetPriceRange(double minPrice) {
+		//Click price range and set
+	    //click right arrow x 5 ($17.85)
+		public AddItemPage clickAndSetPriceRange(double minPrice) {
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(priceBar));
+			priceBar.click();
+			
+			int numberOfSteps = (int) Math.abs((minPrice - 16.00)/0.34);
+		  
+			for(int i=1;i<=numberOfSteps;i++) {
+                priceBar.sendKeys(Keys.ARROW_RIGHT);
+            }
+			
+			priceBar.sendKeys(Keys.ENTER);
+			
+			return this;
+		}
+		
+		
+	 
+		//wait for page to stop loading 
+		public AddItemPage waitForPageLoad() {
+			
+			try {
 				
-				priceBar.click();
+				new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOf(load));
 				
-				int numberOfSteps = (int) Math.abs((minPrice - 16.00)/0.34);
-			  
-				for(int i=1;i<=numberOfSteps;i++) {
-	                priceBar.sendKeys(Keys.ARROW_RIGHT);
-	            }
+			} catch (Exception e) { 
 				
-				priceBar.sendKeys(Keys.ENTER);
+			   System.out.println( e ); 
 				
-				return this;
 			}
 			
 			
-		 
-			//wait for page to stop loading 
-			public AddItemPage waitForPageLoad() {
-				
-				try {
-					
-					new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOf(load));
-					
-				} catch (Exception e) { 
-					
-				   System.out.println( e ); 
-					
-				}
-				
-				
-				return this;
-			}
+			return this;
+		}
 		 
 		 
 		
