@@ -1,9 +1,10 @@
-package pages;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import framework.TestBase;
+import pages.AddItemPage;
 
 public class SelectSize extends TestBase{
 	
