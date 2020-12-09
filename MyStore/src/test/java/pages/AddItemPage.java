@@ -40,7 +40,6 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//td[@class='cart_description']//p[@class='product-name']//a[contains(text(),'Printed Summer Dress')]")
 		WebElement dressInCart;
 		
-
 		@FindBy (xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[2]/ul[1]/li[4]/div[1]/div[2]/div[2]/a[2]/span[1]")
         WebElement summerDress; 
 
@@ -63,8 +62,6 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[2]/ul[1]/p[1]/img[1]")
 		WebElement load; 
 		
-		@FindBy (xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
-		WebElement dressesLink;
         //Created for Select Size Test 
         public AddItemPage clickSummerDress() {
         	summerDress.click();
@@ -161,9 +158,6 @@ public class AddItemPage extends PageObjectBase {
              new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(summerDress));
              return this;
          }
-			 dressesLink.click();
-			 return this;
-		 }
 
 		//Click price range and set
 	    //click right arrow x 5 ($17.85)

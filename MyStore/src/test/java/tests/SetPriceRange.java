@@ -13,8 +13,6 @@ public class SetPriceRange extends TestBase {
   @Test
   public void canFilterSearchByPrice() {
 	    
-	        //Arrange:
-			String expectedText= "Printed Summer Dress";
 
 			//Act:
 			Boolean pageLoaded = new AddItemPage(webDriver, baseUrl)
