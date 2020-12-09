@@ -1,6 +1,8 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import framework.TestBase;
@@ -21,4 +23,5 @@ public class CanSignInTests extends TestBase{
 		String currentPageTitle = webDriver.getTitle();
 		Assert.assertEquals(currentPageTitle, expectedPageTitle);
 	}
+	
 }
