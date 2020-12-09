@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,6 +33,23 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//td[@class='cart_description']//p[@class='product-name']//a[contains(text(),'Printed Summer Dress')]")
 		WebElement dressInCart;
 		
+		@FindBy (xpath = "//span[text()[contains(.,'More')]]")
+		WebElement moreButton;
+		
+		
+		public AddItemPage addMultiple(int numberToAdd) {
+			Actions actions = new Actions(driver);
+			actions.moveToElement(firstDress).perform();
+			moreButton.click();
+			WebElement addDuplicatesButton = driver.findElement(By.className("icon-plus"));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(addDuplicatesButton));
+			for (int i=1; i < numberToAdd; i++) {
+				addDuplicatesButton.click();
+			}
+			driver.findElement(By.id("add_to_cart")).click();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(proceedCheckout));
+			return this;
+		}
 		
 		
 		//2) Create method to navigate page: 
