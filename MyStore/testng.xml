@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<suite name="Suite1" verbose="1">
+    <test name="All tests">
+        <packages>
+            <package name="tests"/>
+        </packages>
+    </test>
+</suite>

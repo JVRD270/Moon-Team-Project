@@ -11,14 +11,5 @@ public class CanLaunchBrowser extends TestBase {
   @Test
   public void tc1CanLaunchBrowser() {
   }
-  @BeforeTest
-  public void beforeTest() {
-	  super.beforeTest();
-  }
-
-  @AfterTest
-  public void afterTest() {
-	  super.afterTest();
-  }
 
 }
