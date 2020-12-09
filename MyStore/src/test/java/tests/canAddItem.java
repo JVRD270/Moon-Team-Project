@@ -30,15 +30,6 @@ public class canAddItem extends TestBase {
 
 	}
 	
-	@BeforeTest
-	public void beforeTest() {
-		super.beforeTest();
-	}
-	
-	@AfterTest
-	public void afterTest() {
-		super.afterTest();
-	}
 
 
 }
