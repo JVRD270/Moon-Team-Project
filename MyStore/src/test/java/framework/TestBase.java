@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import framework.drivers.DriverManagerFactory;
@@ -16,13 +18,13 @@ public abstract class TestBase {
 	protected WebDriver webDriver;
 	protected String baseUrl;
 	
-	@BeforeTest
-	protected void beforeTest() {
+	@BeforeMethod
+	protected void beforeMethod() {
 		LoadConfigurations();
 	}
 	
-	@AfterTest
-	protected void afterTest() {
+	@AfterMethod
+	protected void afterMethod() {
 		this.webDriver.quit();
 	}
 	
