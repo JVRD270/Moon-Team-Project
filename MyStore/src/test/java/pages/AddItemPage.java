@@ -1,5 +1,7 @@
 package pages;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,6 +36,10 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//td[@class='cart_description']//p[@class='product-name']//a[contains(text(),'Printed Summer Dress')]")
 		WebElement dressInCart;
 		
+
+		@FindBy (xpath = "//span[text()[contains(.,'More')]]")
+		WebElement moreButton;
+		
 		@FindBy (xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/form[1]/div[1]/div[10]/ul[1]/div[1]/div[1]/a[1]")
 		WebElement priceBar;
 		
@@ -43,7 +49,22 @@ public class AddItemPage extends PageObjectBase {
 		
 		@FindBy (xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
 		WebElement dressesLink;
+
 		
+  		public AddItemPage addMultiple(int numberToAdd) {
+			Actions actions = new Actions(driver);
+			actions.moveToElement(firstDress).perform();
+			moreButton.click();
+			WebElement addDuplicatesButton = driver.findElement(By.className("icon-plus"));
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(addDuplicatesButton));
+			for (int i=1; i < numberToAdd; i++) {
+				addDuplicatesButton.click();
+			}
+			driver.findElement(By.id("add_to_cart")).click();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(proceedCheckout));
+			return this;
+		}
+
 		
 		//2) Create method to navigate page: 
 		public AddItemPage navigate() {
