@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import framework.CartItem;
 import framework.PageObjectBase;
 
 public class ShoppingCartPage extends PageObjectBase{
@@ -17,6 +18,12 @@ public class ShoppingCartPage extends PageObjectBase{
 	public ShoppingCartPage navigate(){
 		super.navigate("?controller=order");
 		return this;
+	}
+	
+	public CartItem getCartItem(String itemName) {
+		WebElement item = driver.findElement(By.xpath("//tr[contains(@class, 'cart_item')][.//a[contains(text(),'" + itemName +"')]]"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(item));
+		return new CartItem(item, driver);
 	}
 	
 	public ShoppingCartPage goToShoppingCart(){
