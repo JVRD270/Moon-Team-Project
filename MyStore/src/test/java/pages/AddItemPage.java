@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,6 +15,9 @@ public class AddItemPage extends PageObjectBase {
 	public AddItemPage(WebDriver driver, String url) {
 		super(driver, url);
 	}
+		@FindBy (xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
+		WebElement dressesLink;
+	
 		@FindBy (xpath = "//input[@id='search_query_top']")
 		WebElement searchBox; 
 		
@@ -32,7 +36,53 @@ public class AddItemPage extends PageObjectBase {
 		@FindBy (xpath = "//td[@class='cart_description']//p[@class='product-name']//a[contains(text(),'Printed Summer Dress')]")
 		WebElement dressInCart;
 		
-		
+		@FindBy (xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[2]/ul[1]/li[4]/div[1]/div[2]/div[2]/a[2]/span[1]")
+        WebElement summerDress; 
+
+        @FindBy (id = "group_1")
+        WebElement sizeBar;
+
+        @FindBy (xpath = "//span[contains(text(),'Add to cart')]")
+        WebElement altAdd2Cart;
+
+        @FindBy (id = "layer_cart_product_attributes")
+        WebElement sizeMessage;
+
+
+        //Created for Select Size Test 
+        public AddItemPage clickSummerDress() {
+        	summerDress.click();
+            return this;
+        }
+
+        //Created for Select Size Test
+        public AddItemPage clickYourSize() {
+            sizeBar.click();
+            sizeBar.sendKeys(Keys.DOWN);
+            return this;
+        }
+
+
+
+        //Created for Select Size Test
+        public AddItemPage addSizeToCart() {
+            altAdd2Cart.click();
+            return this;
+
+        }
+
+        //Created for Select Size Test- add explicit wait?
+        public String confirmSize() {
+            String size = "";
+            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(sizeMessage));
+            String message = sizeMessage.getText();
+            if (message.contains(", M")) {
+                 size = "M";
+                return size; 
+            }
+            return size; 
+
+        }
 		
 		//2) Create method to navigate page: 
 		public AddItemPage navigate() {
@@ -71,5 +121,11 @@ public class AddItemPage extends PageObjectBase {
 		 		
 		 	   return cartItem; 
 		 }
+		 
+		 public AddItemPage goToDresses() {
+             dressesLink.click();
+             new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(summerDress));
+             return this;
+         }
 		
 }
