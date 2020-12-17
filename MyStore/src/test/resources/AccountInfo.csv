@@ -1,0 +1,4 @@
+firstName,lastName,email,password,houseNumber, street,city,state,postalCode,country,mobilePhone,homePhone,addressAlias
+Jerry,Springer,jspringer2@hotmail.com,12345,11,Cool ,Dallas,Texas,13938,United States,2031234567,2031234566,Tex
+Barak ,Obama,obamaobama2@yahoo.com,123456,12,Cool ,New York ,New York,13483,United States,2031234568,2031234565,New
+Joe ,Biden,jbidenrocks2@gmail.com,1234567,12,Cool ,Wilmington,Delaware ,293893,United States,2031234569,2031234563,Wilm

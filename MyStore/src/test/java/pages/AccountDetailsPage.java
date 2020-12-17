@@ -3,6 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import framework.PageObjectBase;
 
 public class AccountDetailsPage extends PageObjectBase{
@@ -35,5 +38,10 @@ public class AccountDetailsPage extends PageObjectBase{
 	public String getTitle() {
 		WebElement title = driver.findElement(By.xpath("//h1[contains(text(),'Your personal information')]"));
 		return title.getText();
+	}
+	
+	public void signOut() {
+		WebElement signOutButton = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='logout']")));
+		signOutButton.click();
 	}
 }

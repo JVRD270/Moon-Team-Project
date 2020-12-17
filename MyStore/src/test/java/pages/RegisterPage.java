@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import framework.FormFiller;
 import framework.PageObjectBase;
+import framework.UserObject;
 
 public class RegisterPage extends PageObjectBase{
 	private final String urlPath = "?controller=authentication&back=my-account";
@@ -56,6 +58,11 @@ public class RegisterPage extends PageObjectBase{
 	
 	public RegisterPage navigate() {
 		super.navigate(urlPath);
+		return this;
+	}
+	
+	public RegisterPage sendData(UserObject data) {
+		new FormFiller(data, driver, baseUrl).sendData();
 		return this;
 	}
 
