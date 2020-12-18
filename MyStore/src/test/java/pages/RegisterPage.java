@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -106,6 +107,8 @@ public class RegisterPage extends PageObjectBase{
 		return this;
 	}
 	public RegisterPage selectState(String state) {
+		By optionLocator = By.xpath("./option[contains(text(),'" + state + "')]");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfNestedElementLocatedBy(stateInput, optionLocator));
 		new Select(stateInput).selectByVisibleText(state);
 		return this;
 	}
