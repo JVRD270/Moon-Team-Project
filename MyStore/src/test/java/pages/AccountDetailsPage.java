@@ -3,6 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import framework.PageObjectBase;
 
 public class AccountDetailsPage extends PageObjectBase{
@@ -36,6 +39,11 @@ public class AccountDetailsPage extends PageObjectBase{
 		return title.getText();
 	}
 	
+	public void signOut() {
+		WebElement signOutButton = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='logout']")));
+		signOutButton.click();
+	}
+
 	public AccountDetailsPage changePersonalInformation(String first, String last, String pass, String day, String month, String year) {
 		changeFirstName(first);
 		changeLastName(last);
@@ -83,5 +91,5 @@ public class AccountDetailsPage extends PageObjectBase{
 		return results.getText();
 	}
 
-	
+
 }

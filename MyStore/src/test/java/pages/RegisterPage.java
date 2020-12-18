@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import framework.FormFiller;
 import framework.PageObjectBase;
+import framework.UserObject;
 
 public class RegisterPage extends PageObjectBase{
 	private final String urlPath = "?controller=authentication&back=my-account";
@@ -58,6 +61,11 @@ public class RegisterPage extends PageObjectBase{
 		super.navigate(urlPath);
 		return this;
 	}
+	
+	public RegisterPage sendData(UserObject data) {
+		new FormFiller(data, driver, baseUrl).sendData();
+		return this;
+	}
 
 	public RegisterPage sendEmailInput(String email) {
 		emailInput.sendKeys(email);
@@ -99,6 +107,8 @@ public class RegisterPage extends PageObjectBase{
 		return this;
 	}
 	public RegisterPage selectState(String state) {
+		By optionLocator = By.xpath("./option[contains(text(),'" + state + "')]");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfNestedElementLocatedBy(stateInput, optionLocator));
 		new Select(stateInput).selectByVisibleText(state);
 		return this;
 	}
