@@ -11,9 +11,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import framework.MyStorePageWithBreadcrumbs;
 import framework.PageObjectBase;
 
-public class AddItemPage extends PageObjectBase {
+public class AddItemPage extends MyStorePageWithBreadcrumbs {
 	
 	public AddItemPage(WebDriver driver, String url) {
 		super(driver, url);
