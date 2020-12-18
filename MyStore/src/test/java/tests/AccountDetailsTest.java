@@ -17,4 +17,14 @@ public class AccountDetailsTest extends TestBase{
 		
 		Assert.assertEquals(actualTitle, expectedTitle);
 	}
+	
+	@Test
+	public void canChangeAccountDetails() {
+		String expected = "Your personal information has been successfully updated.";
+		String actual = new AccountDetailsPage(webDriver, baseUrl).navigate()
+				.myAccount()
+				.changePersonalInformation("Yuri", "Nader", "butts", "4", "6", "2008")
+				.getResults();
+		Assert.assertEquals(actual, expected);
+	}
 }
