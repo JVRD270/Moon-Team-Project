@@ -10,24 +10,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import framework.BaseStepDefinitions;
 import framework.TestBase;
 
 
 
-public class ExampleStepDefinitions extends TestBase{
+public class ExampleStepDefinitions extends BaseStepDefinitions{
 
-    public static WebDriver driver;
     String baseURL = "https://www.google.com";
-    
-    @Before
-	public void beforeScenario() throws Throwable {
-		super.beforeMethod();
-	}
-	
-	@After
-	public void afterScenario() throws Throwable {
-		super.afterMethod();
-	}
 
     @Given("user launches Google webapp")
     public void user_launches_Google_webapp() throws Throwable {
