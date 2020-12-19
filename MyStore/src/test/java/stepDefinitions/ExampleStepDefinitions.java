@@ -15,6 +15,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import framework.CsvReader;
+import framework.BaseStepDefinitions;
 import framework.TestBase;
 import framework.UserObject;
 import pages.AccountDetailsPage;
@@ -22,9 +23,8 @@ import pages.RegisterPage;
 
 
 
-public class ExampleStepDefinitions extends TestBase{
+public class ExampleStepDefinitions extends BaseStepDefinitions{
 
-    public static WebDriver driver;
     String baseURL = "https://www.google.com";
 
     @Given("user launches Google webapp")
