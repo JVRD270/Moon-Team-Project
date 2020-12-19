@@ -74,7 +74,6 @@ public class RegisterPage extends PageObjectBase{
 
 	public RegisterPage clickCreateAccount() {
 		createAccountButton.click();
-		waitForRegisterPage();
 		return this;
 	}
 	
@@ -87,6 +86,7 @@ public class RegisterPage extends PageObjectBase{
 	}
 	
 	public RegisterPage sendFirstNameInput(String firstName) {
+		waitForRegisterPage();
 		firstNameInput.sendKeys(firstName);
 		return this;
 	}
