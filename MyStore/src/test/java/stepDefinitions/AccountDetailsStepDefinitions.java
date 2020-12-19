@@ -9,20 +9,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import framework.BaseStepDefinitions;
 import framework.TestBase;
 import pages.AccountDetailsPage;
 
-public class AccountDetailsStepDefinitions extends TestBase{
-	
-	@Before
-	public void beforeScenario() throws Throwable {
-		super.beforeMethod();
-	}
-	
-	@After
-	public void afterScenario() throws Throwable {
-		super.afterMethod();
-	}
+public class AccountDetailsStepDefinitions extends BaseStepDefinitions{
 	
 	@Given("^user views account details$")
 	public void loginToAccount(){

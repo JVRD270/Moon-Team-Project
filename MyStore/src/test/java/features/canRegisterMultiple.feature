@@ -16,12 +16,17 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+
+################################## Everytime test is ran we need to change e-mail addresses 
+################################## in csv file
+
 @tag
-Feature: Title of your feature
+Feature: Can register multiple
   I want to use this template for my feature file
 
   @tag1
- Scenario: Title of your scenario outline
+ Scenario: want to register users in csv file
     Given I want to register multiple clients from a csv file to my store
     When I navigate to register page
     And submit required data for multiple users

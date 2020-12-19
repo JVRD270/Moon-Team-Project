@@ -11,6 +11,11 @@ import framework.UserObject;
 import pages.AccountDetailsPage;
 import pages.RegisterPage;
 
+
+////////////EVERYTIME THIS TEST IS RAN, E-MAIL ADDRESSES MUST BE CHANGED IN CSV FILE
+////////////BECAUSE IT WON'T ALLOW REGISTERING SAME USER TWICE
+
+
 public class canRegisterMultiple extends TestBase{
   @Test
   public void canRegisterMultipleUsers() throws Exception {
