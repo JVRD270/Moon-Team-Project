@@ -32,5 +32,9 @@ public class UserObject {
 		this.homePhone = data.get("homePhone");
 		this.addressAlias = data.get("addressAlias");
 	}
+	
+	public String getEmail() {
+		return this.email;
+	}
 
 }
