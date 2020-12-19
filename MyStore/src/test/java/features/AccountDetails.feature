@@ -10,7 +10,7 @@ Feature: User should be able to change personal account details
 	Scenario Outline: Change account settings scenario outline
 		Given user views account details
 		When user enters "<firstname>" into First Name
-		And user enters  "<lastname>" into Last Name
+		And user enters "<lastname>" into Last Name
 		And user enters "<password>" into Current Password
 		And clicks save button
 		Then response given "<response>"
